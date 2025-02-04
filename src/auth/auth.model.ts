@@ -5,8 +5,6 @@ export type AuthDocument = HydratedDocument<AuthModel>;
 
 @Schema()
 export class AuthModel {
-	_id: string;
-
 	@Prop({ required: true })
 	email: string;
 

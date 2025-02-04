@@ -12,8 +12,6 @@ class ProductCharacteristic {
 }
 
 export class ProductModel {
-	_id: string;
-
 	@Prop()
 	image: string;
 
