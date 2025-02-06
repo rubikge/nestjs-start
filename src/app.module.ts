@@ -7,6 +7,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './user/user.module';
 import { getMongoString } from './configs/mongo.config';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
 	imports: [
@@ -25,5 +27,7 @@ import { getMongoString } from './configs/mongo.config';
 		ReviewModule,
 		UserModule,
 	],
+	controllers: [AppController],
+	providers: [AppService],
 })
 export class AppModule {}
