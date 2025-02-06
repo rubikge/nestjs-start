@@ -3,5 +3,5 @@ export class CreateReviewDTO {
 	title: string;
 	description: string;
 	rating: number;
-	projectId: string;
+	productId: string;
 }
