@@ -6,8 +6,6 @@ import { ReviewModule } from './review/review.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { getMongoString } from './configs/mongo.config';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 
 @Module({
 	imports: [
@@ -25,7 +23,5 @@ import { AppService } from './app.service';
 		ProductModule,
 		ReviewModule,
 	],
-	controllers: [AppController],
-	providers: [AppService],
 })
 export class AppModule {}

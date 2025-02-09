@@ -42,11 +42,10 @@ describe('AppController (e2e)', () => {
 	});
 
 	it('/review/create (POST) - fail', async () => {
-		const { body } = await request(app.getHttpServer())
+		await request(app.getHttpServer())
 			.post('/review/create')
 			.send({ ...testDto, rating: 0 })
 			.expect(400);
-		console.log(body);
 	});
 
 	it('/review/byProduct/:productId (GET) - success', () => {
