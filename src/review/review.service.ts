@@ -3,6 +3,10 @@ import { InjectModel } from '@nestjs/mongoose';
 import { ReviewDocument, ReviewModel } from './review.model';
 import { DeleteResult, Model, Types } from 'mongoose';
 import { CreateReviewDTO } from './dto/create-review.dto';
+import {
+	INVALID_ID_FORMAT,
+	INVALID_PRODUCTID_FORMAT,
+} from './review.constants';
 
 @Injectable()
 export class ReviewService {
@@ -13,7 +17,7 @@ export class ReviewService {
 
 	async create(dto: CreateReviewDTO): Promise<ReviewDocument> {
 		if (!Types.ObjectId.isValid(dto.productId)) {
-			throw new BadRequestException('Invalid productId format');
+			throw new BadRequestException(INVALID_PRODUCTID_FORMAT);
 		}
 
 		const newReview = new this.reviewModel({
@@ -25,7 +29,7 @@ export class ReviewService {
 
 	async delete(id: string): Promise<ReviewDocument | null> {
 		if (!Types.ObjectId.isValid(id)) {
-			throw new BadRequestException('Invalid id format');
+			throw new BadRequestException(INVALID_ID_FORMAT);
 		}
 
 		return this.reviewModel.findByIdAndDelete(new Types.ObjectId(id));
@@ -35,7 +39,7 @@ export class ReviewService {
 		productId: string,
 	): Promise<ReviewDocument[]> {
 		if (!Types.ObjectId.isValid(productId)) {
-			throw new BadRequestException('Invalid productId format');
+			throw new BadRequestException(INVALID_PRODUCTID_FORMAT);
 		}
 
 		return this.reviewModel.find({
@@ -45,7 +49,7 @@ export class ReviewService {
 
 	async deleteByProductId(productId: string): Promise<DeleteResult> {
 		if (!Types.ObjectId.isValid(productId)) {
-			throw new BadRequestException('Invalid productId format');
+			throw new BadRequestException(INVALID_PRODUCTID_FORMAT);
 		}
 
 		return this.reviewModel.deleteMany({
