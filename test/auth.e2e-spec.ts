@@ -26,7 +26,7 @@ describe('AppController (e2e)', () => {
 	});
 
 	it('/auth/register (POST) - already registered', async () => {
-		const { body } = await request(app.getHttpServer())
+		await request(app.getHttpServer())
 			.post('/auth/register')
 			.send(testDto)
 			.expect(400, {
